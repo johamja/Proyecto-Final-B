@@ -20,9 +20,10 @@ namespace Proyecto_Final_B.Clases
             }
             else
             {
-                throw new Exception("la fecha de afiliacion ");
+                throw new Exception("la fecha de afiliacion tiene que ser menor o igual al la fecha actual " + DateTime.Now);
             }
         }
+
         // constructor / sobrecarga
         public Usuario(uint id, string nombre, DateTime fecha_de_afiliacion)
         {
@@ -34,7 +35,7 @@ namespace Proyecto_Final_B.Clases
             }
             else
             {
-                throw new Exception("la fecha de afiliacion ");
+                throw new Exception("la fecha de afiliacion tiene que ser menor o igual al la fecha actual " + DateTime.Now);
             }
         }
 
@@ -77,7 +78,7 @@ namespace Proyecto_Final_B.Clases
                 }
                 else
                 {
-                    throw new Exception("la fecha de afiliacion es mayor a " + DateTime.Now);
+                    throw new Exception("la fecha de afiliacion tiene que ser menor o igual al la fecha actual " + DateTime.Now);
                 }
             }
         }

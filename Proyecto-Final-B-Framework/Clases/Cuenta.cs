@@ -13,10 +13,25 @@ namespace Proyecto_Final_B.Clases
 
         public Cuenta(Usuario usuario, List<Contenido> contenido)
         {
-            this.Usuario = usuario;
+            Usuario = usuario;
             if (contenido.Count >= 1)
             {
-                this.Contenido = contenido;
+                foreach (Contenido elemento1 in contenido) // verificamos la lista si tiene elementos repetidos
+                {
+                    foreach (Contenido elemento2 in contenido)
+                    {
+                        if (elemento1 == elemento2)
+                        {
+                            break;
+                            throw new Exception("la lista de contenido no puede tener elementos repetidos");
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
+                this.contenido = contenido;
             }
             else
             {
@@ -24,8 +39,10 @@ namespace Proyecto_Final_B.Clases
             }
         }
 
-        public Usuario Usuario { get => usuario; set 
-            { 
+        public Usuario Usuario
+        {
+            get => usuario; set
+            {
                 if (value is Usuario)
                 {
                     usuario = value;
@@ -36,10 +53,27 @@ namespace Proyecto_Final_B.Clases
                 }
             }
         }
-        public List<Contenido> Contenido { get => contenido; set 
-            { 
-                if(value.Count >= 1)
+        public List<Contenido> Contenido
+        {
+            get => contenido; set
+            {
+                if (value.Count >= 1)
                 {
+                    foreach (Contenido elemento1 in value) // verificamos la lista si tiene elementos repetidos
+                    {
+                        foreach (Contenido elemento2 in value)
+                        {
+                            if (elemento1 == elemento2)
+                            {
+                                break;
+                                throw new Exception("la lista de contenido no puede tener elementos repetidos");
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                    }
                     contenido = value;
                 }
                 else
@@ -47,10 +81,7 @@ namespace Proyecto_Final_B.Clases
                     throw new Exception("se requiere almenos un elemento en la lista");
                 }
             }
-        } 
-        //public float Puntos_Acum_P { get => Puntos_Acumulados_P; }
-        //public float Puntos_Acum_S { get => Puntos_Acumulados_S; }
-        //public float Puntos_Acum_J { get => Puntos_Acumulados_J; }
+        }
 
         public float Puntos_Totales()
         {
@@ -69,9 +100,7 @@ namespace Proyecto_Final_B.Clases
                         if (consumo <= pelicula.Duracion && consumo >= new TimeSpan(0, 0, 0)) // verificar si el consumo de la pelicula es menor o igual a la duracion
                         {
                             // realizamos proceso de adicion de puntos de usuario
-                            float total = 0;
-                            total = (float)consumo.TotalMinutes / 60;
-                            Console.WriteLine((float)consumo.TotalMinutes + "hola mundo");
+                            float total = (float)consumo.TotalMinutes / 60;
                             Puntos_Acumulados_P += total;
                             break;
                         }

@@ -4,13 +4,13 @@ namespace Proyecto_Final_B.Clases
 {
     public class Juego : Contenido
     {
-        private string genero; // tipo string
+        private string genero;
         private uint score;
 
         public Juego(string nombre, string genero, uint score) : base(nombre)
         {
-            this.Genero = genero;
-            this.Score = score;
+            Genero = genero;
+            Score = score;
         }
 
         public string Genero
@@ -19,7 +19,7 @@ namespace Proyecto_Final_B.Clases
             {
                 if (String.IsNullOrEmpty(value) || String.IsNullOrEmpty(value) || value.Length <= 3)
                 {
-                    throw new Exception("verifique el genero del juego si no esta vacio, con espacios en blanco y que tenga como minimo tres letras");
+                    throw new Exception("verifique el genero del juego no esta vacio, con espacios en blanco y que tenga como minimo cuatro letras");
                 }
                 else
                 {

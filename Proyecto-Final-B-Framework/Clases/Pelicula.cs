@@ -14,23 +14,34 @@ namespace Proyecto_Final_B.Clases
             {
                 throw new Exception("una pelicula no puede durar un dia");
             }
-            else if (duracion.Hours > 4)
+            else if (duracion.Hours >= 4)
             {
                 throw new Exception("una pelicula no puede dirar mas de 4 horas");
             }
             else
             {
-                this.Duracion = duracion;
+                this.duracion = duracion;
             }
 
-            this.Calificacion = calificacion;
+            Calificacion = calificacion;
         }
 
         public TimeSpan Duracion
         {
             get => duracion; set
             {
-                duracion = value;
+                if (value.Days >= 1)
+                {
+                    throw new Exception("una pelicula no puede durar un dia");
+                }
+                else if (value.Hours >= 4)
+                {
+                    throw new Exception("una pelicula no puede dirar mas de 4 horas");
+                }
+                else
+                {
+                    duracion = value;
+                }
             }
         }
         public byte Calificacion

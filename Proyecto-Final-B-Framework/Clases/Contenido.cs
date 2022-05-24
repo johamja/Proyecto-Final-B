@@ -11,18 +11,14 @@ namespace Proyecto_Final_B.Clases
             this.Nombre = nombre;
         }
 
-        // metodo accesor para el atributo nombre 
         public string Nombre
         {
             get => nombre; set
             {
-                // si el nombres corresponde a valor nulo // si el nombre tiene spacios vacios // si el nombre tiene el tamaño menor a 5 letras  
-                if (String.IsNullOrEmpty(value) || value.Length <= 3)
+                if (String.IsNullOrEmpty(value) || value.Length <= 3) // que el nombre no sea nulo y que sea mayor que 3
                 {
-                    // lanzamos un error
-                    throw new Exception("Revisar el nombre de la atracción");
+                    throw new Exception("el nombre no tiene que ser un dato nulo y tiene que ser mayor que 3");
                 }
-                // de lo contrario pasamos el valor al atributo nombre del objeto contenido
                 else
                 {
                     nombre = value;
