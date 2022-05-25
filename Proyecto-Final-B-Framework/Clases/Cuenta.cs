@@ -14,7 +14,7 @@ namespace Proyecto_Final_B.Clases
         public Cuenta(Usuario usuario, List<Contenido> contenido)
         {
             Usuario = usuario;
-            if (contenido.Count >= 1)
+            if (contenido.Count >= 0)
             {
                 foreach (Contenido elemento1 in contenido) // verificamos la lista si tiene elementos repetidos
                 {
@@ -57,7 +57,7 @@ namespace Proyecto_Final_B.Clases
         {
             get => contenido; set
             {
-                if (value.Count >= 1)
+                if (value.Count >= 0)
                 {
                     foreach (Contenido elemento1 in value) // verificamos la lista si tiene elementos repetidos
                     {
@@ -109,6 +109,10 @@ namespace Proyecto_Final_B.Clases
                             throw new Exception("se encuentra un error con el consumo, no se encuentra en el rango 0:0:0 a " + pelicula.Duracion);
                         }
                     }
+                    else if (elemento is Pelicula && elemento.Nombre != pelicula.Nombre)
+                    {
+                        throw new Exception("la pelicula no se encuentra en la lista");
+                    }
                     else
                     {
                         continue;
@@ -144,6 +148,9 @@ namespace Proyecto_Final_B.Clases
                         {
                             throw new Exception("se encuentra un error con el consumo, no se encuentra en el rango 0 a " + total);
                         }
+                    } else if (elemento is Serie && elemento.Nombre != serie.Nombre)
+                    {
+                        throw new Exception("la serie no se encuentra en la lista");
                     }
                     else
                     {
@@ -174,6 +181,10 @@ namespace Proyecto_Final_B.Clases
                             throw new Exception("se encuentra un error con el consumo, no se encuentra en el rango 0 a " + juego.Score);
                         }
 
+                    }
+                    else if(elemento is Juego && elemento.Nombre != juego.Nombre)
+                    {
+                        throw new Exception("el juego no se encuentra en la lista");
                     }
                     else
                     {
